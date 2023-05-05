@@ -6,6 +6,7 @@ sequenceDiagram
 
     client->>server: POST "https://studies.cs.helsinki.fi/exampleapp/new_note" --data=note: "Thanks for making this course"
     Note right of client: The client (could be via CLI, Browser, etc), makes a POST request to the server.
+    deactivate client
     
     server->>server: Server validates data sent.
     deactivate server
