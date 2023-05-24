@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-
-
+import React, { useState } from 'react';
 
 
 const Header = (props) => {
@@ -35,35 +33,41 @@ const Total = (props) => {
   )
 }
 
-const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
+const Display = ({counter}) => {
+  console.log("conter:",counter)
+  return(
+  <div>{counter}</div>
+  )
+}
 
-  ]}
+const Button = ({handleClick, text}) => 
+    <button onClick={handleClick}>
+      {text}
+    </button>
+    
+
+
+const App = () => {
+  let [counter, setCounter ] = useState(0)
+ 
+  const increaseOne = () => setCounter(counter + 1)
+  const decreaseOne = () => setCounter(counter - 1)
+  const setZero = () => setCounter(0)
+  
+  
   return (
     <div>
-    <Header course={course.name}>
-    </Header>
-    <div>
-    <Content parts={course.parts}>
-    </Content>
-    <Total parts={course.parts}>
-    </Total>
-      
-    </div>
+    <Display counter={counter}></Display>
+    <Button handleClick={increaseOne} 
+    text='plus'/>      
+    <Button        
+    handleClick={setZero}
+            text='zero'
+    />           
+    <Button        
+    handleClick={decreaseOne}
+            text='minus'
+    />   
     </div>
   )
 }
